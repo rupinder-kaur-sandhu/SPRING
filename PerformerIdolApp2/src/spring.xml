@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="guitar" class="com.uttara.spring.Guitar"/>
+	<bean id="tabla" class="com.uttara.spring.Tabla"/>
+	<bean id="piano" class="com.uttara.spring.Piano"/>
+	
+	<bean id="i1" class="com.uttara.spring.Instrumentalist">
+		 <property name="name" value="jimi"/>
+		 <property name="instrument" ref="guitar"/>
+	</bean>
+	
+	<bean id="i2" class="com.uttara.spring.Instrumentalist">
+		 <property name="name" value="zakir"/>
+		 <property name="instrument" ref="guitar"/>
+	</bean>
+	
+	<bean id="i3" class="com.uttara.spring.Instrumentalist">
+		 <property name="name" value="mitsoku"/>
+		 <property name="instrument" ref="guitar"/>
+	</bean>
+	
+	<bean id="i4" class="com.uttara.spring.OneManBand">
+		<property name="name" value="ambi"/>
+		<property name="instrument" ref="piano"/>
+		<property name="instruments">
+			<list>
+				<ref bean="guitar"/>
+				<ref bean="guitar"/>
+				<ref bean="tabla"/>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="audi" class="com.uttara.spring.Auditorium"
+	init-method="turnOnLights" destroy-method="turnOffLights"/>
+	
+	<bean id="ticket" class="com.uttara.spring.Ticket" scope="prototype"></bean>
+
+</beans>
